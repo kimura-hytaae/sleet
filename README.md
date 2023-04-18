@@ -1,5 +1,5 @@
 # sleet
-  ターミナル上で天気を見ることができるCLIです。
+  sleetはターミナル上で天気を見ることができるCLIです。
  
 # 概要（Overview）
 ターミナル上で実行することで天気を瞬時に見ることができます。
@@ -7,8 +7,9 @@
 # 使い方（Usage）
 CLIで天気予報を取得します。  
 
+//玉田先生のコピー
 ```bash
-weather [OPTIONS] [LOCATIONs...]
+sleet [OPTIONS] [LOCATIONs...]
 OPTIONS
   -v, --verbose                verbose mode.
   -h, --help                   print this message and exit.
