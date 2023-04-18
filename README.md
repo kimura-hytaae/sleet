@@ -1,12 +1,23 @@
 # sleet
  
-sleetは霙(みぞれ)の意味で天気を意識したものです。
+
  
-# DEMO
- まだない...
  
-# Features
- 天気を見ることができるCLIです。
+# 概要
+ ターミナル上で天気を見ることができるCLIです。
+ 
+# Usage
+ 
+DEMOの実行方法など、"hoge"の基本的な使い方を説明する  まだできていない
+
+ターミナル上でコマンドを打つことで天気を表示してくれます。
+ 
+```bash
+git clone https://github.com/kimura-hytaae/sleet
+cd examples
+python demo.py
+```
+ 
  
 # Requirement
  
@@ -23,27 +34,19 @@ Requirementで列挙したライブラリなどのインストール方法を説
 pip install huga_package
 ```
  
-# Usage
- 
-DEMOの実行方法など、"hoge"の基本的な使い方を説明する  まだできていない
- 
-```bash
-git clone https://github.com/kimura-hytaae/sleet
-cd examples
-python demo.py
-```
- 
+
 # Note
  
 注意点などがあれば書く
  
-# Author
+# プロジェクトについて
  
 作成情報を列挙する
  
-* 木村颯
-* 京都産業大学 先端情報学研究科
-* i2386058@cc.kyoto-su.ac.jp
+* 開発者：木村颯
+* 所属：京都産業大学 先端情報学研究科
+* メールアドレス：i2386058@cc.kyoto-su.ac.jp
+* 名前の由来：sleetは霙(みぞれ)の意味で天気を意識したものです。
  
 # License 
 
