@@ -45,11 +45,14 @@ pip install sleet_package
 * メールアドレス：i2386058@cc.kyoto-su.ac.jp
 * 名前の由来：　　sleetは霙(みぞれ)の意味で天気を意識したものです。
 * バージョン：　　2023/4/18 ver.1
-* アイコン：　　　![sleet_icon](https://user-images.githubusercontent.com/92291361/232662040-3a87611a-bf53-41bb-8a86-b6954be1eb1b.svg)
+* アイコン：　　　
+* 
+* ![sleet_icon](https://user-images.githubusercontent.com/92291361/232662040-3a87611a-bf53-41bb-8a86-b6954be1eb1b.svg)
 
  
 # License 
 ![](https://img.shields.io/github/license/kimura-hytaae/sleet)
+
 "sleet"はMITのライセンスを使用しています。
 "sleet" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
  
