@@ -12,6 +12,7 @@ sleet [OPTIONS] [LOCATIONs...] [DAYs...] [WEATHERs]
 OPTIONS
   -v, --version                バージョンを表示します。
   -h, --help                   ヘルプを表示します。
+  -
 LOCATION
   specify the location in the following ways. 次の方法などで指定します。
   - 緯度経度
@@ -21,9 +22,6 @@ DAY
   specify the location in the following ways. 次の方法などで指定します。
   - 日付指定
   - 何日かの指定
-WEATHER
-  specify the location in the following ways. 次の方法などで指定します。
-  - 天気指定（晴れの日などの日にちを表示）
 ```
  
 # インストール方法（Installation）
