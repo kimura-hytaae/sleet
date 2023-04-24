@@ -49,7 +49,7 @@ pip install sleet_package
 
  
 # License 
-
+https://img.shields.io/github/license/kimura-hytaae/sleet
 "sleet"はMITのライセンスを使用しています。
 "sleet" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
  
