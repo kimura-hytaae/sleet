@@ -5,20 +5,25 @@
 ターミナル上で実行することで天気を瞬時に見ることができます。
  
 # 使い方（Usage）
-CLIで天気予報を取得します。  
+CLIで天気予報を取得します。 各地域の天気と洗濯物の乾きやすいかどうか示す乾燥率も表示する予定です。 
 
-//玉田先生のコピー
 ```bash
-sleet [OPTIONS] [LOCATIONs...]
+sleet [OPTIONS] [LOCATIONs...] [DAYs...] [WEATHERs]
 OPTIONS
-  -v, --verbose                verbose mode.
-  -h, --help                   print this message and exit.
-  -V, --version                print the version and exit.
+  -v, --version                バージョンを表示します。
+  -h, --help                   ヘルプを表示します。
 LOCATION
-  specify the location in the following ways.
-  - Latitude and Longitude,
-  - Postal code.
-  - The city name.
+  specify the location in the following ways. 次の方法などで指定します。
+  - 緯度経度
+  - ポスタルコード
+  - 市の名前
+DAY
+  specify the location in the following ways. 次の方法などで指定します。
+  - 日付指定
+  - 何日かの指定
+WEATHER
+  specify the location in the following ways. 次の方法などで指定します。
+  - 天気指定（晴れの日などの日にちを表示）
 ```
  
 # インストール方法（Installation）
@@ -27,7 +32,7 @@ LOCATION
 Requirementで列挙したライブラリなどのインストール方法を説明する
  
 ```bash
-pip install huga_package
+pip install sleet_package
 ```
 
  
