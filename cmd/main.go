@@ -1,12 +1,15 @@
 package main
+
 import (
-  "fmt"
-  "os" )
+	"fmt"
+	"os"
+)
+
 func goMain(args []string) int {
-  fmt.Println("Hello World")
-  return 0
+	fmt.Println("Hello World")
+	return 0
 }
 func main() {
-  status := goMain(os.Args)
-  os.Exit(status)
+	status := goMain(os.Args)
+	os.Exit(status)
 }
