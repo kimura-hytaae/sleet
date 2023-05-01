@@ -6,6 +6,7 @@
   [![codebeat badge](https://codebeat.co/badges/de48853f-d89b-4ac2-bce7-3697e76e052e)](https://codebeat.co/projects/github-com-kimura-hytaae-sleet-main)
   [![Go Report Card](https://goreportcard.com/badge/github.com/kimura-hytaae/sleet)](https://goreportcard.com/report/github.com/kimura-hytaae/sleet)
 
+![Version](https://img.shields.io/badge/Version-0.1.0-informational)
  
 # 概要（Overview）
 ターミナル上で実行することで天気を瞬時に見ることができます。
