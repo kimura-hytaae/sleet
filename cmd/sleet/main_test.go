@@ -1,4 +1,4 @@
-package main // これはmainでございます
+package main  // main
 
 import "testing"
 
