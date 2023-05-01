@@ -4,6 +4,7 @@
   [![build](https://github.com/kimura-hytaae/sleet/actions/workflows/build.yaml/badge.svg)](https://github.com/kimura-hytaae/sleet/actions/workflows/build.yaml)
   [![Coverage Status](https://coveralls.io/repos/github/kimura-hytaae/sleet/badge.svg?branch=main)](https://coveralls.io/github/kimura-hytaae/sleet?branch=main)
   [![codebeat badge](https://codebeat.co/badges/de48853f-d89b-4ac2-bce7-3697e76e052e)](https://codebeat.co/projects/github-com-kimura-hytaae-sleet-main)
+  [![Go Report Card](https://goreportcard.com/badge/github.com/kimura-hytaae/sleet)](https://goreportcard.com/report/github.com/kimura-hytaae/sleet)
 
 ![Version](https://img.shields.io/badge/Version-0.1.0-informational)
  
