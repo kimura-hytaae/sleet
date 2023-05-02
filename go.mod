@@ -1,3 +1,3 @@
 module github.com/kimura-hytaae/sleet
 
-go 1.20
+go 1.18
