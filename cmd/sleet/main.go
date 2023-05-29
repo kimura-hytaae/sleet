@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 
 	//"github.com/kimura-hytaae/sleet"
-	//flag "github.com/spf13/pflag"
+	flag "github.com/spf13/pflag"
 )
 
 const VERSION = "0.1.0"
@@ -101,7 +101,7 @@ func (opts *options) mode(args []string) sleet.Mode {
 /*
 Define the options and return the pointer to the options and the pointer to the flagset.
 */
-/*
+
 func buildOptions(args []string) (*options, *flag.FlagSet) {
 	opts := newOptions()
 	flags := flag.NewFlagSet(args[0], flag.ContinueOnError)
@@ -110,12 +110,12 @@ func buildOptions(args []string) (*options, *flag.FlagSet) {
 	flags.BoolVarP(&opts.flagSet.versionFlag, "version", "v", false, "print the version and exit.")
 	return opts, flags
 }
-*/
+
 
 /*
 parseOptions parses options from the given command line arguments.
 */
-/*
+
 func parseOptions(args []string) (*options, []string, *SleetError) {
 	opts, flags := buildOptions(args)
 	flags.Parse(args[1:])
@@ -132,7 +132,7 @@ func parseOptions(args []string) (*options, []string, *SleetError) {
 	}
 	return opts, flags.Args(), nil
 }
-*/
+
 
 /*
 修正する必要がある
