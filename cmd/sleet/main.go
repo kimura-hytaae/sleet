@@ -5,8 +5,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/kimura-hytaae/sleet"
-	flag "github.com/spf13/pflag"
+	//"github.com/kimura-hytaae/sleet"
+	//flag "github.com/spf13/pflag"
 )
 
 const VERSION = "0.1.0"
@@ -81,6 +81,7 @@ func newOptions() *options {
 /*
 sleet.goの中身を変えて必要な部分だけ残す必要あり
 */
+/*
 func (opts *options) mode(args []string) sleet.Mode {
 	switch {
 	case opts.flagSet.listGroupFlag:
@@ -95,10 +96,12 @@ func (opts *options) mode(args []string) sleet.Mode {
 		return sleet.Shorten
 	}
 }
+*/
 
 /*
 Define the options and return the pointer to the options and the pointer to the flagset.
 */
+/*
 func buildOptions(args []string) (*options, *flag.FlagSet) {
 	opts := newOptions()
 	flags := flag.NewFlagSet(args[0], flag.ContinueOnError)
@@ -107,10 +110,12 @@ func buildOptions(args []string) (*options, *flag.FlagSet) {
 	flags.BoolVarP(&opts.flagSet.versionFlag, "version", "v", false, "print the version and exit.")
 	return opts, flags
 }
+*/
 
 /*
 parseOptions parses options from the given command line arguments.
 */
+/*
 func parseOptions(args []string) (*options, []string, *SleetError) {
 	opts, flags := buildOptions(args)
 	flags.Parse(args[1:])
@@ -127,6 +132,7 @@ func parseOptions(args []string) (*options, []string, *SleetError) {
 	}
 	return opts, flags.Args(), nil
 }
+*/
 
 /*
 修正する必要がある
@@ -134,6 +140,7 @@ func parseOptions(args []string) (*options, []string, *SleetError) {
 urleapをsleetに変更
 Shortenを Weather
 */
+/*
 func shortenEach(open_meteo *sleet.Open_meteo, config *sleet.Config, localcite string) error {
 	result, err := open_meteo.Weather(config, localcite)
 	if err != nil {
@@ -142,18 +149,22 @@ func shortenEach(open_meteo *sleet.Open_meteo, config *sleet.Config, localcite s
 	fmt.Println(result)
 	return nil
 }
+*/
 
 /*
 urleapの部分をsleetに変更
 urlの部分をlocalciteに変更
 */
+/*
 func deleteEach(open_meteo *sleet.Open_meteo, config *sleet.Config, localcite string) error {
 	return open_meteo.Delete(config, localcite)
 }
+*/
 
 /*
 bitlyとurleap、url、urlsをopen_meteoとsleet、localcite、localcitesに変更
 */
+/*
 func listUrls(open_meteo *sleet.Open_meteo, config *sleet.Config) error {
 	urls, err := open_meteo.List(config)
 	if err != nil {
@@ -164,10 +175,12 @@ func listUrls(open_meteo *sleet.Open_meteo, config *sleet.Config) error {
 	}
 	return nil
 }
+*/
 
 /*
 bitlyとurleap、url、urlsをopen_meteoとsleet、localcite、localcitesに変更
 */
+/*
 func listGroups(open_meteo *sleet.Open_meteo, config *sleet.Config) error {
 	groups, err := open_meteo.Groups(config)
 	if err != nil {
@@ -178,6 +191,7 @@ func listGroups(open_meteo *sleet.Open_meteo, config *sleet.Config) error {
 	}
 	return nil
 }
+*/
 
 /*
 UrleapErrorをSleetErrorに変更
@@ -241,6 +255,7 @@ func makeError(err error, status int) *SleetError {
 mainから
 */
 func goMain(args []string) int {
+	/*
 	opts, args, err := parseOptions(args)
 	if err != nil {
 		if err.statusCode != 0 {
@@ -252,6 +267,8 @@ func goMain(args []string) int {
 		fmt.Println(err.Error())
 		return err.statusCode
 	}
+	*/
+	fmt.Println("HelloWorld")
 	return 0
 }
 
