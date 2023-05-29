@@ -3,11 +3,12 @@ VERSION := 0.1.0
 NAME := sleet
 DIST := $(NAME)-$(VERSION)
 
-sleet: coverage.out cmd/sleet/main.go *.go
-	go build -o sleet cmd/sleet/main.go
+sleet: coverage.out
+	go build -o sleet $(PACKAGE_LIST)
 
-test:
-	go test -covermode=count -coverprofile=coverage.out $(PACKAGE_LIST)
+coverage.out: cmd/sleet/main_test.go
+	go test -covermode=count \
+		-coverprofile=coverage.out $(PACKAGE_LIST)
 
 # refer from https://pod.hatenablog.com/entry/2017/06/13/150342
 define _createDist
