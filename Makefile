@@ -3,8 +3,8 @@ VERSION := 0.1.0
 NAME := sleet
 DIST := $(NAME)-$(VERSION)
 
-sleet: coverage.out
-	go build -o sleet $(PACKAGE_LIST)
+sleet: coverage.out cmd/sleet/main.go *.go
+	go build -o sleet cmd/sleet/main.go
 
 coverage.out: cmd/sleet/main_test.go
 	go test -covermode=count \
