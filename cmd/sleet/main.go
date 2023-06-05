@@ -1,9 +1,12 @@
 package main
 
 import (
+//	_ "embed"
+//	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
+//	"strconv"
 
 	//"github.com/kimura-hytaae/sleet"
 	flag "github.com/spf13/pflag"
@@ -238,6 +241,19 @@ func perform(opts *options, args []string) *SleetError {
 }
 
 /*
+//go:embed"cities.json"
+var citiesJson []byte
+type City struct {
+	Country   string  `json:"country"`
+	Name      string  `json:"name"`
+	lat       string  `json:"lat"`
+	lng       string  `json:"lng"`
+	Latitude  float64 `json:"-"`
+	Longitude float64 `json:"-"`
+}
+*/
+
+/*
 UrleapErrorをSleetErrorに変更
 */
 func makeError(err error, status int) *SleetError {
@@ -255,8 +271,7 @@ func makeError(err error, status int) *SleetError {
 mainから
 */
 func goMain(args []string) int {
-	/*
-	opts, args, err := parseOptions(args)
+/*	opts, args, err := parseOptions(args)  //helpメッセージなどを表示するためのもの
 	if err != nil {
 		if err.statusCode != 0 {
 			fmt.Println(err.Error())
@@ -266,13 +281,25 @@ func goMain(args []string) int {
 	if err := perform(opts, args); err != nil {
 		fmt.Println(err.Error())
 		return err.statusCode
+	}*/
+/*	
+	cities := []City{}
+	err := json.Unmarshal(citiesJson, &cities) 
+	if err != nil {
+        fmt.Println(err.Error())
+		return 0
+    }
+    for _, city := range cities {
+		city.Latitude, _ = strconv.ParseFloat(city.lat, 64)
+		city.Longitude, _ = strconv.ParseFloat(city.lng, 64) 
 	}
-	*/
-	fmt.Println("HelloWorld")
+	fmt.Printf("read %d entries¥n", len(cities))*/
+	fmt.Println("Hello, World.")
 	return 0
 }
 
 func main() {
-	status := goMain(os.Args)
+	fmt.Println("Hello, World.")
+	status := goMain2(os.Args)
 	os.Exit(status)
 }
