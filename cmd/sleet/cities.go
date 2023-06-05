@@ -31,11 +31,11 @@ func goMain2(args []string) int {
 		city.Longitude, _ = strconv.ParseFloat(city.Lng, 64)
 	}
 	fmt.Printf("read %d entries\n", len(cities))
-	/*for i := 0; i < len(cities); i++ {
+	for i := 0; i < len(cities); i++ {
 		if args[1] == cities[i].Name {
 			fmt.Println(cities[i])
 			return 0
 		}
-	}*/
+	}
 	return 2
 }
