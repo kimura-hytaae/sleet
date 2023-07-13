@@ -1,13 +1,11 @@
 package main
 
 import (
-	//	_ "embed"
-	//	"encoding/json"
+	_ "embed"
 	"fmt"
 	"os"
 	"path/filepath"
 
-	//"github.com/kimura-hytaae/sleet"
 	"github.com/kimura-hytaae/sleet"
 	flag "github.com/spf13/pflag"
 )
