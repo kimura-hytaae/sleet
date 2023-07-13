@@ -7,8 +7,6 @@ import (
 	"os"
 	"path/filepath"
 
-	//	"strconv"
-
 	//"github.com/kimura-hytaae/sleet"
 	"github.com/kimura-hytaae/sleet"
 	flag "github.com/spf13/pflag"
@@ -111,11 +109,11 @@ func buildOptions(args []string) (*options, *flag.FlagSet) {
 	opts := newOptions()
 	flags := flag.NewFlagSet(args[0], flag.ContinueOnError)
 	flags.Usage = func() { fmt.Println(helpMessage(args)) }
+	flags.StringVarP(&opts.runOpt.token, "token", "t", "", "specify the token for the service. This option is mandatory.")
 	flags.BoolVarP(&opts.flagSet.helpFlag, "help", "h", false, "print this mesasge and exit.")
 	flags.BoolVarP(&opts.flagSet.versionFlag, "version", "v", false, "print the version and exit.")
 	return opts, flags
 }
-
 
 /*
 parseOptions parses options from the given command line arguments.
@@ -132,12 +130,11 @@ func parseOptions(args []string) (*options, []string, *SleetError) {
 		fmt.Println(versionString(args))
 		return nil, nil, &SleetError{statusCode: 0, message: ""}
 	}
-	if opts.runOpt.token == "" {
-		return nil, nil, &SleetError{statusCode: 3, message: "no token was given"}
-	}
+	// if opts.runOpt.token == "" {
+	// 	return nil, nil, &SleetError{statusCode: 3, message: "no token was given"}
+	// }
 	return opts, flags.Args(), nil
 }
-
 
 /*
 修正する必要がある
@@ -217,43 +214,21 @@ bitlyとurleap、url、urlsをopen_meteoとsleet、localcite、localcitesに変�
 UrleapErrorをSleetError
 */
 func perform(opts *options, args []string) *SleetError {
-	/*
-	open_meteo := sleet.NewOpen_meteo(opts.runOpt.group)
-	config := sleet.NewConfig(opts.runOpt.config, opts.mode(args))
-	config.Token = opts.runOpt.token
-	switch config.RunMode {
-	case sleet.List:
-		err := listUrls(open_meteo, config)
+	city, err := sleet.GoMain2(args) // cityはポインタで格納されている。city.Name, city.Lat, city.Lng
+	if err != nil {
 		return makeError(err, 1)
-	case sleet.ListGroup:
-		err := listGroups(open_meteo, config)
-		return makeError(err, 2)
-	case sleet.Delete:
-		return performImpl(args, func(url string) error {
-			return deleteEach(open_meteo, config, url)
-		})
-	case sleet.Shorten:
-		return performImpl(args, func(url string) error {
-			return shortenEach(open_meteo, config, url)
-		})
 	}
-	*/
-	fmt.Println("Hello World.")
+
+	/* 本当は別のファイルに投げてurlを自分の要求に応じたものを返したかった */
+	// open-meteoにアクセするためのurlを作成, 後ろの","以下に天気のコードなど知りたい情報を追加すると返してくれる, 「relativehumidity_2m,」(湿度)今回はいらない
+	// url := fmt.Sprintf("https://api.open-meteo.com/v1/forecast?latitude=%s&longitude=%s&current_weather=true&hourly=temperature_2m,weathercode", city.Lat, city.Lng)  // daily の方1日単位で見たい時に選べば良い気がする
+	url := fmt.Sprintf("https://api.open-meteo.com/v1/forecast?latitude=%s&longitude=%s&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=Asia/Tokyo", city.Lat, city.Lng)
+	url_weather, err := sleet.Meteo(url)
+	fmt.Printf("%sの一週間分の天気を表示します.\n", city.Name)
+	sleet.Weathers(url_weather)
+
 	return nil
 }
-
-/*  cities.go の文
-//go:embed"cities.json"
-var citiesJson []byte
-type City struct {
-	Country   string  `json:"country"`
-	Name      string  `json:"name"`
-	Lat       string  `json:"lat"`
-	Lng       string  `json:"lng"`
-	Latitude  float64 `json:"-"`
-	Longitude float64 `json:"-"`
-}
-*/
 
 /*
 UrleapErrorをSleetErrorに変更
@@ -269,12 +244,9 @@ func makeError(err error, status int) *SleetError {
 	return &SleetError{statusCode: status, message: err.Error()}
 }
 
-/*
-mainから
-*/
+// mainからの実行、ヘルプメッセージなどoptの関数呼び出し
 func goMain(args []string) int {
-	sleet.GoMain2(args)
-	opts, args, err := parseOptions(args)  //helpメッセージなどを表示するためのもの
+	opts, args, err := parseOptions(args) //helpメッセージなどを表示するためのもの
 	if err != nil {
 		if err.statusCode != 0 {
 			fmt.Println(err.Error())
@@ -285,25 +257,10 @@ func goMain(args []string) int {
 		fmt.Println(err.Error())
 		return err.statusCode
 	}
-/*	cities.goの文
-	cities := []*City{}
-	err := json.Unmarshal(citiesJson, &cities) 
-	if err != nil {
-        fmt.Println(err.Error())
-		return 0
-    }
-    for _, city := range cities {
-		city.Latitude, _ = strconv.ParseFloat(city.Lat, 64)
-		city.Longitude, _ = strconv.ParseFloat(city.Lng, 64) 
-	}
-	fmt.Printf("read %d entries¥n", len(cities))*/
-	fmt.Println("Hello, World.")
 	return 0
 }
 
 func main() {
-	fmt.Println("Hello, World.")
 	status := goMain(os.Args)
-	//status := GoMain2(os.Args)
 	os.Exit(status)
 }
