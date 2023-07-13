@@ -3,11 +3,17 @@ VERSION := 0.1.0
 NAME := sleet
 DIST := $(NAME)-$(VERSION)
 
-build: test
-	go build -o sleet $(PACKAGE_LIST)
+sleet: coverage.out cmd/sleet/main.go *.go
+	go build -o sleet cmd/sleet/main.go
 
-test:
-	go test -covermode=count -coverprofile=coverage.out $(PACKAGE_LIST)
+coverage.out: cmd/sleet/main_test.go
+	go test -covermode=count \
+		-coverprofile=coverage.out $(PACKAGE_LIST)
+
+docker: sleet
+#	docker build -t ghcr.io/$(REPO_NAME):$(VERSION) -t ghcr.io/$(REPO_NAME):latest .
+	docker buildx build -t ghcr.io/$(REPO_NAME):$(VERSION) \
+		-t ghcr.io/$(REPO_NAME):latest --platform=linux/arm64/v8,linux/amd64 --push .
 
 # refer from https://pod.hatenablog.com/entry/2017/06/13/150342
 define _createDist
