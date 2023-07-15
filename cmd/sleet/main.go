@@ -244,6 +244,13 @@ func makeError(err error, status int) *SleetError {
 
 // mainからの実行、ヘルプメッセージなどoptの関数呼び出し
 func goMain(args []string) int {
+	/*何も書かれていない時の処理（実行したらすぐに終了する）*/
+	if len(args) == 1 {
+		fmt.Println("sleetの後ろに英語で地名を入れてください（イニシャル大文字）")
+		return 0
+	}
+
+	/*何か与えられた時の実行*/
 	opts, args, err := parseOptions(args) //helpメッセージなどを表示するためのもの
 	if err != nil {
 		if err.statusCode != 0 {
