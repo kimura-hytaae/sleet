@@ -17,7 +17,7 @@ type options struct {
 func helpMessage(name string, flags *flag.FlagSet) string {
 	return fmt.Sprintf(`%s
 Usage: %s [options] [arguments]
-%s\n`, name, flags.FlagUsages())
+%s\n`, name, name, flags.FlagUsages())
 }
 
 func buildOptions(args []string) (*options, *flag.FlagSet) {
