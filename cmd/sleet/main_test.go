@@ -2,6 +2,12 @@ package main
 
 import "testing"
 
+// func Example_Completion() {
+// 	goMain([]string{"./sleet", "--generate-completions"})
+// 	// Output:
+// 	// GenerateCompletion
+// }
+
 func Example_Help() {
 	goMain([]string{"./sleet", "-help"})
 	// Output:
@@ -22,7 +28,7 @@ func Example_Help() {
 }
 
 func Test_Main(t *testing.T) {
-	if status := goMain([]string{"./sleet", "Osaka"}); status != 0 {
+	if status := goMain([]string{"./sleet", "-help"}); status != 0 {
 		t.Error("Expected 0, got ", status)
 	}
 }
