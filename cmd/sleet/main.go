@@ -58,25 +58,23 @@ type flags struct {
 	listGroupFlag bool
 	helpFlag      bool
 	versionFlag   bool
+	completions   bool
 }
 
-type runOpts struct {
-	token  string
-	qrcode string
-	config string
-	group  string
-}
+var completions bool
+
+
+
 
 /*
 This struct holds the values of the options.
 */
 type options struct {
-	runOpt  *runOpts
 	flagSet *flags
 }
 
 func newOptions() *options {
-	return &options{runOpt: &runOpts{}, flagSet: &flags{}}
+	return &options{flagSet: &flags{}}
 }
 
 /*
@@ -107,9 +105,10 @@ func buildOptions(args []string) (*options, *flag.FlagSet) {
 	opts := newOptions()
 	flags := flag.NewFlagSet(args[0], flag.ContinueOnError)
 	flags.Usage = func() { fmt.Println(helpMessage(args)) }
-	flags.StringVarP(&opts.runOpt.token, "token", "t", "", "specify the token for the service. This option is mandatory.")
 	flags.BoolVarP(&opts.flagSet.helpFlag, "help", "h", false, "print this mesasge and exit.")
 	flags.BoolVarP(&opts.flagSet.versionFlag, "version", "v", false, "print the version and exit.")
+	flags.BoolVarP(&completions, "generate-completions", "", false, "completionsを生成します.")
+	flags.MarkHidden("generate-completions")
 	return opts, flags
 }
 
@@ -127,6 +126,10 @@ func parseOptions(args []string) (*options, []string, *SleetError) {
 	if opts.flagSet.versionFlag {
 		fmt.Println(versionString(args))
 		return nil, nil, &SleetError{statusCode: 0, message: ""}
+	}
+	if completions{
+		fmt.Println("GenerateCompletion")
+		GenerateCompletion(flags)
 	}
 	// if opts.runOpt.token == "" {
 	// 	return nil, nil, &SleetError{statusCode: 3, message: "no token was given"}
