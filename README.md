@@ -33,11 +33,10 @@ DAY
  
 # インストール方法（Installation）
  
- まだ書けていない  
-Requirementで列挙したライブラリなどのインストール方法を説明する
+homebrew
  
 ```bash
-pip install sleet_package
+brew install kimura-hytaae/tap/sleet
 ```
 
  
